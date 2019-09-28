@@ -43,6 +43,7 @@ def load_voc2012():
     images = []
     for image_name in image_names:
         image = Image.open(os.path.join(image_path, image_name))
+        image = image.resize([224, 224])
         image = np.array(image)
         images.append(image)
     images = np.array(images)
@@ -64,11 +65,11 @@ def load_voc2012():
         for classes in value:
             onehot[dataset_classes[classes]] = 1
         label_onehot.append(onehot)
+    label_onehot = np.array(label_onehot)
 
     return images, label_onehot
 
-
-images, labels = load_voc2012()
-print(labels)
-
-print(len(images), len(labels))
+# images, labels = load_voc2012()
+# print(labels)
+#
+# print(len(images), len(labels))
