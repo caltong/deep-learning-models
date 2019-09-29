@@ -25,8 +25,8 @@ base_model = VGG16(weights='imagenet', include_top=False)
 x = base_model.output
 x = GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
-x = Dense(20)(x)
-prediction = ThresholdedReLU(theta=0.8)(x)
+prediction  = Dense(20, activation='sigmoid')(x)
+# prediction = ThresholdedReLU(theta=0.8)(x)
 
 for layer in base_model.layers:
     layer.trainable = False
