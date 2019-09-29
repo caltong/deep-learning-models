@@ -75,6 +75,6 @@ tbCallBack = TensorBoard(log_dir='./logs',  # log 目录
                          embeddings_metadata=None,
                          embeddings_data=None,
                          update_freq='epoch')
-checkpointer = ModelCheckpoint(filepath='vgg_with_voc2012.h5', verbose=1, save_best_only=True, save_weights_only=False)
+checkpointer = ModelCheckpoint(filepath='vgg16_with_voc2012.h5', verbose=1, save_best_only=True, save_weights_only=False)
 model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=128, batch_size=32,
           callbacks=[tbCallBack, checkpointer])
